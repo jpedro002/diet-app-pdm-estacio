@@ -7,7 +7,7 @@ export default function HomeScreen() {
 				Hello, NativeWind v4!
 			</Text>
 			<Text className="text-blue-500 text-2xl bg-black font-roboto-bold">
-				Hello, NativeWind v4!
+				Hello, NativeWind v4! test
 			</Text>
 		</View>
 	)
