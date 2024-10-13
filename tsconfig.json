@@ -23,9 +23,12 @@
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "src/app/index.jsx"  ]
+  "**/*.ts",
+  "**/*.tsx",
+  "**/*.js",
+  "**/*.jsx",
+  ".expo/types/**/*.ts",
+  "expo-env.d.ts"
+]
+
 }
