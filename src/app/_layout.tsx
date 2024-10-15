@@ -1,3 +1,4 @@
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { Slot } from 'expo-router'
 import '../global.css'
 import {
@@ -21,5 +22,9 @@ export default function LayoutMain() {
 		)
 	}
 
-	return <Slot />
+	return (
+		<GluestackUIProvider mode="light">
+			<Slot />
+		</GluestackUIProvider>
+	)
 }
