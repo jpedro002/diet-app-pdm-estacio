@@ -1,4 +1,5 @@
 import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
+import { Link } from 'expo-router'
 import { Text, View } from 'react-native'
 import colors from 'tailwindcss/colors'
 
@@ -12,12 +13,13 @@ export default function HomeScreen() {
 				Hello, NativeWind v4!
 			</Text>
 
-			<Button className="p-2 rounded-xl w-fit mt-2 " size="lg">
-				<ButtonSpinner color={colors.gray[400]} />
-				<ButtonText className="font-medium text-sm  ml-2">
-					Please wait...
-				</ButtonText>
-			</Button>
+			<Link href={'/auth'} asChild>
+				<Button className="p-2 rounded-xl w-fit mt-2 " size="lg">
+					<ButtonText className="font-medium text-sm  ml-2">
+						Please wait...
+					</ButtonText>
+				</Button>
+			</Link>
 		</View>
 	)
 }
