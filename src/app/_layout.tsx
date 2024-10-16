@@ -1,6 +1,7 @@
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { Slot } from 'expo-router'
 import '../global.css'
+import { ReduxProvider } from '@/store/ReduxProvider'
 import {
 	Roboto_400Regular,
 	Roboto_700Bold,
@@ -23,8 +24,10 @@ export default function LayoutMain() {
 	}
 
 	return (
-		<GluestackUIProvider mode="light">
-			<Slot />
-		</GluestackUIProvider>
+		<ReduxProvider>
+			<GluestackUIProvider mode="light">
+				<Slot />
+			</GluestackUIProvider>
+		</ReduxProvider>
 	)
 }
