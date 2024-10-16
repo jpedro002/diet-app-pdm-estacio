@@ -3,7 +3,7 @@ import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Link, useGlobalSearchParams } from 'expo-router' // Import Link from expo-router
+import { Link, useGlobalSearchParams, useRouter } from 'expo-router' // Import Link from expo-router
 import { EyeIcon, EyeOffIcon } from 'lucide-react-native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -24,6 +24,7 @@ function App() {
 	const [showPassword, setShowPassword] = useState(false)
 	const params = useGlobalSearchParams()
 	const email = params.email as string
+	const router = useRouter()
 
 	const {
 		control,
@@ -43,6 +44,7 @@ function App() {
 
 	const onSubmit = (data: LoginFormData) => {
 		console.log(data)
+		router.replace('/(app)')
 	}
 
 	return (
