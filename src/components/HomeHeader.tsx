@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 
 export const HomeHeader = () => {
 	return (
-		<View className="h-fit flex-row gap-3 items-center ">
+		<View className="h-fit flex-row gap-3 items-center p-4 pt-0 ">
 			<View className="size-14 bg-purple-800 rounded-full items-center justify-center ">
 				<Text className="text-white text-2xl font-roboto-regular">JP</Text>
 			</View>
