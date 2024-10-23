@@ -1,7 +1,8 @@
 import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
 import { useAppSelector } from '@/store'
 import { increment } from '@/store/slices/counterSlice'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
+import { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import colors from 'tailwindcss/colors'
@@ -18,10 +19,10 @@ export default function HomeScreen() {
 				Hello, NativeWind v4!
 			</Text>
 			<Text className="text-blue-500 text-2xl bg-black font-roboto-bold">
-				Hello, NativeWind v4!
+				Hello, NativeWind v4! food
 			</Text>
 
-			<Link href={'/auth'} asChild>
+			<Link href={'/auth/login'} asChild>
 				<Button className="p-2 rounded-xl w-fit mt-2 " size="lg">
 					<ButtonText className="font-medium text-sm  ml-2">
 						Please wait...

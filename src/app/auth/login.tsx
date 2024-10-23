@@ -2,6 +2,8 @@ import { Button, ButtonText } from '@/components/ui/button'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
+import useAuth from '@/hooks/useAuth'
+import { useAppSelector } from '@/store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useGlobalSearchParams, useRouter } from 'expo-router' // Import Link from expo-router
 import { EyeIcon, EyeOffIcon } from 'lucide-react-native'
@@ -24,7 +26,10 @@ function App() {
 	const [showPassword, setShowPassword] = useState(false)
 	const params = useGlobalSearchParams()
 	const email = params.email as string
-	const router = useRouter()
+
+	const loading = useAppSelector((s) => s.user.loading)
+
+	const { signin } = useAuth()
 
 	const {
 		control,
@@ -42,9 +47,8 @@ function App() {
 		setShowPassword((prevState) => !prevState)
 	}
 
-	const onSubmit = (data: LoginFormData) => {
-		console.log(data)
-		router.replace('/(app)')
+	const onSubmit = async (data: LoginFormData) => {
+		await signin(data)
 	}
 
 	return (
@@ -104,8 +108,10 @@ function App() {
 				</VStack>
 
 				<View className="flex-row w-full justify-between">
-					<Button onPress={handleSubmit(onSubmit)}>
-						<ButtonText className="text-typography-0">Login</ButtonText>
+					<Button onPress={handleSubmit(onSubmit)} disabled={loading}>
+						<ButtonText className="text-typography-0">
+							{loading ? 'aguarde' : 'Login'}
+						</ButtonText>
 					</Button>
 
 					<Link href="/auth/register" asChild>

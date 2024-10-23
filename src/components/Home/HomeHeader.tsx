@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/store'
 import { Link } from 'expo-router'
 import { Bell } from 'lucide-react-native'
 import React from 'react'
@@ -5,6 +6,8 @@ import { Text, View } from 'react-native'
 import { Button } from '../ui/button'
 
 export const HomeHeader = () => {
+	const userName = useAppSelector((s) => s.user.firstName)
+
 	return (
 		<View className="h-fit flex-row gap-3 items-center p-4">
 			<Link href={'/(home)/profile'}>
@@ -14,8 +17,8 @@ export const HomeHeader = () => {
 			</Link>
 
 			<View className="flex-1 pl-4">
-				<Text className="text-2xl font-roboto-regular">John Doe</Text>
-				<Text className="text-gray-500">Welcome back, John</Text>
+				<Text className="text-2xl font-roboto-regular">Olá</Text>
+				<Text className="text-gray-500">Bem-vindo, {userName || 'asd'}</Text>
 			</View>
 			<Link href={'/(home)/notifications'} asChild>
 				<Button variant="link" className="px-3">

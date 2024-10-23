@@ -15,6 +15,9 @@
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.2.3",
     "@expo/vector-icons": "^14.0.2",
+    "@firebase/app": "^0.10.15",
+    "@firebase/auth": "^1.8.0",
+    "@firebase/firestore": "^4.7.4",
     "@gluestack-ui/button": "^1.0.7",
     "@gluestack-ui/input": "^0.1.31",
     "@gluestack-ui/nativewind-utils": "^1.0.25",

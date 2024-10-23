@@ -2,20 +2,22 @@ import { Button, ButtonText } from '@/components/ui/button'
 import { Input, InputField, InputSlot } from '@/components/ui/input'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
+import useAuth from '@/hooks/useAuth'
+import { useAppSelector } from '@/store'
 import {
 	Radio,
 	RadioGroup,
 	RadioIcon,
 	RadioIndicator,
 	RadioLabel,
-} from '@components/ui/radio' // Ajuste o caminho conforme necessário
+} from '@components/ui/radio'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useRouter } from 'expo-router'
 import { EyeIcon, EyeOffIcon } from 'lucide-react-native'
-import { CircleIcon } from 'lucide-react-native' // Importando o ícone
+import { CircleIcon } from 'lucide-react-native'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { z } from 'zod'
 
 const registrationSchema = z.object({
@@ -31,13 +33,15 @@ const registrationSchema = z.object({
 	}),
 })
 
-type RegistrationFormData = z.infer<typeof registrationSchema>
+export type RegistrationFormData = z.infer<typeof registrationSchema>
 
 function Registration() {
 	const [showPassword, setShowPassword] = useState(false)
 	const [userType, setUserType] = useState('user')
 
-	const router = useRouter()
+	const { registerUser } = useAuth()
+
+	const isLoading = useAppSelector((s) => s.user.loading)
 
 	const {
 		control,
@@ -58,14 +62,16 @@ function Registration() {
 		setShowPassword((prevState) => !prevState)
 	}
 
-	const onSubmit = (data: RegistrationFormData) => {
+	const onSubmit = async (data: RegistrationFormData) => {
 		console.log(data)
 
-		router.push(`/auth?email=${encodeURIComponent(data.email)}`)
+		if (isLoading) return
+
+		await registerUser(data)
 	}
 
 	return (
-		<View style={{ flex: 1, justifyContent: 'center' }}>
+		<ScrollView style={{ flex: 1 }}>
 			<VStack space="xl" className="h-fit p-4">
 				<Text className="font-roboto-bold text-3xl">Cadastrar</Text>
 
@@ -82,6 +88,7 @@ function Registration() {
 									onBlur={onBlur}
 									onChangeText={onChange}
 									value={value}
+									autoCapitalize="words"
 								/>
 							</Input>
 						)}
@@ -200,16 +207,18 @@ function Registration() {
 					/>
 				</VStack>
 
-				<Button onPress={handleSubmit(onSubmit)}>
+				<Button onPress={handleSubmit(onSubmit)} disabled={isLoading}>
 					<ButtonText className="text-typography-0">Cadastrar</ButtonText>
 				</Button>
 				<Link href="/auth" asChild>
 					<Button variant="link" className="justify-start">
-						<ButtonText className="text-black">Login</ButtonText>
+						<ButtonText className="text-black">
+							Login {isLoading && 'abc'}
+						</ButtonText>
 					</Button>
 				</Link>
 			</VStack>
-		</View>
+		</ScrollView>
 	)
 }
 
