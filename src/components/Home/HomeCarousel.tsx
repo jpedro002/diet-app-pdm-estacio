@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import { ChevronRight, Utensils } from 'lucide-react-native'
 import React from 'react'
 import { Dimensions, Text, View } from 'react-native'
@@ -14,10 +15,11 @@ const renderItem = () => {
 				</Text>
 			</View>
 			<View className="flex-1 items-center justify-end pb-2">
-				<Text className="text-purple-800 text-lg font-roboto-bold">
-					{' '}
-					Registrar refeição{' '}
-				</Text>
+				<Link href={'/(home)/123'} asChild>
+					<Text className="text-purple-800 text-lg font-roboto-bold">
+						Registrar refeição
+					</Text>
+				</Link>
 			</View>
 		</View>
 	)
@@ -40,14 +42,19 @@ export const HomeCarousel = () => {
 	return (
 		<View className="flex-1 h-64 bg-white py-6">
 			<View className="flex-row justify-between  items-center  w-full px-4 pb-1">
-				<View className="flex-row gap-3 items-center">
-					<Utensils size={18} color={'#94a3b8'} />
-					<Text className="text-lg font-roboto-regular text-slate-400">
-						Plano alimentar
-					</Text>
-				</View>
-				<ChevronRight size={22} color={'#94a3b8'} />
+				<Link href={'/(home)/dietPlan'} className="px-2 py-1">
+					<View className="flex-row gap-3 items-center">
+						<Utensils size={18} color={'#94a3b8'} />
+						<Text className="text-lg font-roboto-regular text-slate-400">
+							Plano alimentar
+						</Text>
+					</View>
+				</Link>
+				<Link href={'/(home)/dietPlan'} className="px-2 py-1">
+					<ChevronRight size={22} color={'#94a3b8'} />
+				</Link>
 			</View>
+
 			<Carousel
 				autoPlayInterval={2000}
 				data={defaultDataWith6Colors}

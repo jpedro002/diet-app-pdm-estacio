@@ -11,7 +11,7 @@ import { StatusBar, View } from 'react-native'
 
 const AppLayout = () => {
 	return (
-		<View className="flex-1" style={{ paddingTop: StatusBar.currentHeight }}>
+		<View className="flex-1">
 			<StatusBar translucent backgroundColor="transparent" />
 
 			<Tabs

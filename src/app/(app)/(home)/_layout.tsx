@@ -32,8 +32,30 @@ const HomeLayout = () => {
 			}}
 		>
 			<Stack.Screen name="index" options={{ headerShown: false }} />
-			<Stack.Screen name="notifications" options={{}} />
-			<Stack.Screen name="registeNewMeal" options={{}} />
+			<Stack.Screen
+				name="notifications"
+				options={{
+					headerTitle: 'Notificações',
+				}}
+			/>
+			<Stack.Screen
+				name="[newMealPeriod]/index"
+				options={{
+					headerTitle: 'Registrar refeição',
+				}}
+			/>
+			<Stack.Screen
+				name="dietPlan"
+				options={{
+					headerTitle: 'Plano alimentar',
+				}}
+			/>
+			<Stack.Screen
+				name="profile"
+				options={{
+					headerTitle: 'Perfil',
+				}}
+			/>
 		</Stack>
 	)
 }
