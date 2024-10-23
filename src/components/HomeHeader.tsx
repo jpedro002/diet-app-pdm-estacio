@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import { Bell } from 'lucide-react-native'
 import React from 'react'
 import { Text, View } from 'react-native'
@@ -14,10 +15,11 @@ export const HomeHeader = () => {
 				<Text className="text-2xl font-roboto-regular">John Doe</Text>
 				<Text className="text-gray-500">Welcome back, John</Text>
 			</View>
-
-			<Button variant="link">
-				<Bell size={16} color={'#6b21a8'} fill={'#6b21a8'} />
-			</Button>
+			<Link href={'/(app)/(home)/notifications'} asChild>
+				<Button variant="link">
+					<Bell size={16} color={'#6b21a8'} fill={'#6b21a8'} />
+				</Button>
+			</Link>
 		</View>
 	)
 }

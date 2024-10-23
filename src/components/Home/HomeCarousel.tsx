@@ -4,7 +4,7 @@ import { Dimensions, Text, View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
 
-const renderItem = ({ item }: { item: string }) => {
+const renderItem = () => {
 	return (
 		<View className="bg-slate-100 rounded-lg h-40 p-3 mx-2">
 			<View className="">
@@ -23,8 +23,6 @@ const renderItem = ({ item }: { item: string }) => {
 	)
 }
 
-type HomeCarouselProps = {}
-
 const defaultDataWith6Colors = [
 	'#B0604D',
 	'#899F9C',
@@ -34,7 +32,7 @@ const defaultDataWith6Colors = [
 	'#F1F1F1',
 ]
 
-export const HomeCarousel = ({}: HomeCarouselProps) => {
+export const HomeCarousel = () => {
 	const progress = useSharedValue<number>(0)
 
 	const { width } = Dimensions.get('window')
@@ -54,7 +52,7 @@ export const HomeCarousel = ({}: HomeCarouselProps) => {
 				autoPlayInterval={2000}
 				data={defaultDataWith6Colors}
 				height={258}
-				loop={true}
+				loop={false}
 				pagingEnabled={true}
 				snapEnabled={true}
 				width={width - 16}

@@ -23,7 +23,7 @@ const AppLayout = () => {
 				}}
 			>
 				<Tabs.Screen
-					name="index"
+					name="(home)"
 					options={{
 						tabBarIcon: ({ color }) => <House size={20} color={color} />,
 					}}
